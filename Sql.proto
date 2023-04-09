@@ -1,0 +1,43 @@
+syntax = "proto3";
+package SQL;
+message Dish
+{
+  int32 dish_id = 1;
+  string name = 2;
+  int32 price = 3;
+  int32 number = 4;
+}
+
+message Order
+{
+  int32 order_id = 1;
+  int32 table_id = 2;
+  string time = 3;
+  string dish_ids = 4;
+  int32 state = 5;
+}
+
+message Task
+{
+  enum Task_List
+  {
+    News = 0;
+    Dish_Insert = 1;
+    Dish_Delete = 2;
+    Dish_Update = 3;
+    Dish_QueryOne = 4;
+    Dish_QueryAll = 5;
+    Order_Insert = 6;
+    Order_Delete = 7;
+    Order_Update = 8;
+    Order_QueryOne = 9;
+    Order_QueryAll = 10;
+  }
+  Task_List op = 1;
+  Dish dish = 2;
+  Order order = 3;
+  string news = 4;
+  repeated Dish Dish_vector = 5;
+  repeated Order Order_vector = 6;
+  string accept = 7;
+}
